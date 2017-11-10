@@ -6,10 +6,19 @@
     <title>iFrame Hash Sync Test Inner Page</title>
   </head>
   <body>
+    <h1>Inner Page</h1>
     <script>
-      setInterval(function (){
-        window.location.hash = Math.random()
-      }, 1000);
+      var count = 0;
+      document.body.addEventListener("click", function (){
+        window.location.hash = "from-inner-page-" + count++;
+      });
+
+      //console.log('[inner page] initial hash value is ' + window.location.hash);
+
+      //window.addEventListener('hashchange', function () {
+      //  console.log('[inner page] hash changed to ' + window.location.hash);
+      //});
+
     </script>
   </body>
 </html>

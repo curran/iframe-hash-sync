@@ -17,6 +17,13 @@
     iFrame.contentWindow.addEventListener('hashchange', function () {
       window.location.hash = iFrame.contentWindow.location.hash;
     });
+
+    // Propagate changes from outer page to inner page.
+    // Set initial value on page load.
+    if (window.location.hash) {
+      iFrame.contentWindow.location.hash = window.location.hash;
+    }
+    console.log(window.location.hash);
   }
 
   return iFrameHashSync;
