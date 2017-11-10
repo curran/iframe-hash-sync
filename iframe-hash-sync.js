@@ -1,4 +1,3 @@
-
 // UMD boilerplate from https://github.com/umdjs/umd/blob/master/templates/returnExports.js
 // Supports AMD, CommonJS, and browser global (iFrameHashSync).
 (function (root, factory) {
@@ -13,11 +12,11 @@
 
   // Accepts the iFrame DOM node.
   function iFrameHashSync(iFrame){
-    console.log(iFrame.contentWindow);
-    console.log(iFrame.contentWindow.addEventListener('hashchange', function () {
-      console.log(iFrame.contentWindow.location);
-      console.log(iFrame.contentWindow.location.hash);
-    }));
+
+    // Propagate changes from inner page to outer page.
+    iFrame.contentWindow.addEventListener('hashchange', function () {
+      window.location.hash = iFrame.contentWindow.location.hash;
+    });
   }
 
   return iFrameHashSync;
